@@ -56,6 +56,8 @@ RETURN_TYPE_ERROR MathEngine::Calculator::initCalculation(const std::string& _in
         return RETURN_TYPE_ERROR{std::get<MathEngine::Error>(res)};
     }
 
+    this->calculationTime = std::chrono::duration_cast<std::chrono::microseconds>(this->stop - this->start);
+
     this->result = std::get<long double>(res);
 
     return MathEngine::NoError();
