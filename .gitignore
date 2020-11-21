@@ -1,5 +1,9 @@
 # Project exclude paths
 /cmake-build-debug/*
 /cmake-build-release/*
+/cmake-build-debug-armhf/*
+/cmake-build-release-armhf/*
 !/cmake-build-debug/libMathEngineSharedLibrary.so
 !/cmake-build-release/libMathEngineSharedLibrary.so
+!/cmake-build-debug-armhf/libMathEngineSharedLibrary.so
+!/cmake-build-release-armhf/libMathEngineSharedLibrary.so
