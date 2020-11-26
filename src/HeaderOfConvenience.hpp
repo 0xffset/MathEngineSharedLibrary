@@ -18,7 +18,7 @@ code++;
 
 #define ADD_CONST(name, code, value) \
 this->constantParseTable.insert(std::pair<std::string, char>(name, constCode(code))); \
-this->constantTable.insert(std::pair<char, Constant>(constCode(code), Constant(value, std::string("[") + std::string(name) + std::string("]")))); \
+this->constantTable.insert(std::pair<char, Constant>(constCode(code), Constant(value, name))); \
 code++;
 
 #define ADD_OP(name, _Operator) this->operatorTable.insert(std::pair<char, Operator*>(name, _Operator));
@@ -28,5 +28,7 @@ bool isNumeric(char c);
 bool isFunction(char c, int amount);
 
 bool isConstant(char c, int amount);
+
+bool isOperator(char c);
 
 #endif //MATHENGINE_HEADEROFCONVENIENCE_HPP

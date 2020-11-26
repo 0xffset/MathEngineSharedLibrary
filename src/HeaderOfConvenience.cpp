@@ -15,3 +15,7 @@ bool isFunction(char c, int amount) {
 bool isConstant(char c, int amount) {
     return c >= CONSTANT_START_RANGE && c < (CONSTANT_START_RANGE + amount);
 }
+
+bool isOperator(char c) {
+    return c =='+' || c == '-' || c == '*' || c == '/' || c == '^';
+}

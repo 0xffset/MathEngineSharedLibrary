@@ -68,10 +68,10 @@ void MathEngine::Calculator::setup() {
     this->constCount = 0;
 
     // Add functions
-    ADD_FUNC("sqrt", this->funcCount, new SquareRoot(5, "[sqrt]", 1))
-    ADD_FUNC("sin", this->funcCount, new Sine(6, "[sin]", 1))
-    ADD_FUNC("cos", this->funcCount, new Cosine(6, "[cos]", 1))
-    ADD_FUNC("tan", this->funcCount, new Tangent(6, "[tan]", 1))
+    ADD_FUNC("sqrt", this->funcCount, new SquareRoot(5, "sqrt", 1))
+    ADD_FUNC("sin", this->funcCount, new Sine(6, "sin", 1))
+    ADD_FUNC("cos", this->funcCount, new Cosine(6, "cos", 1))
+    ADD_FUNC("tan", this->funcCount, new Tangent(6, "tan", 1))
 
     // Add constants
     ADD_CONST("pi", this->constCount, M_PIl)

@@ -36,14 +36,14 @@ RETURN_TYPE_ERROR infixToRPN::convertInput(std::string &in, std::string &rpn_out
     std::stack<char> operatorStack;
     for (int i = 0; i < in.size(); i++) {
         char token = in.at(i);
-        if (token == '[') {
+        if (token >= 'A' && token <= 'z') {
             std::string specialSymbolParse;
 
-            i++;
-            while (in.at(i) != ']') {
+            while (i < in.size() && !isOperator(in.at(i)) && in.at(i) != '(' && in.at(i) != ')') {
                 specialSymbolParse += in.at(i);
                 i++;
             }
+            i--;
 
             if (operatorParseTable.find(specialSymbolParse) != operatorParseTable.end()) {
                 token = operatorParseTable.at(specialSymbolParse);
@@ -53,18 +53,15 @@ RETURN_TYPE_ERROR infixToRPN::convertInput(std::string &in, std::string &rpn_out
             } else if (constantParseTable.find(specialSymbolParse) != constantParseTable.end()) {
                 token = constantParseTable.at(specialSymbolParse);
             } else {
-                std::string errorMessage = "Function/Constant not found!\n\"" + in + "\"\n";
-                errorMessage += ShowError::err(i - specialSymbolParse.size());;
+                std::string errorMessage = "Function/Constant \"" + specialSymbolParse;
+                errorMessage += "\" not found!\n\"" + in + "\"\n";
+                errorMessage += ShowError::err(i - specialSymbolParse.size() - 1);;
                 return RETURN_TYPE_ERROR{(MathEngine::Error(MathEngine::ErrorType::FUNC_CONST_NOT_FOUND, errorMessage))};
             }
         } else if (token == '-' && (i == 0 ||
                                     (i > 0 && (in.at(i - 1) == '+' || in.at(i - 1) == '-' ||
                                                in.at(i - 1) == '*' || in.at(i - 1) == '/')))) {
             token = funcCode(4);
-        } else if (token == ']') {
-            std::string errorMessage = "No matching '[' found!\n\"" + in + "\"\n";
-            errorMessage += ShowError::err(i);
-            return RETURN_TYPE_ERROR{MathEngine::Error(MathEngine::ErrorType::NO_OPENING_BRACKET, errorMessage)};
         }
 
 

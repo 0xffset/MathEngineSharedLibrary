@@ -27,7 +27,7 @@ RETURN_TYPE_ERROR inputParser::parseInput(std::string &in, const char *argv) {
     for (int i = 0; i < temp.size(); i++) {
         if (temp.at(i) == '.' && (i == 0 || !isNumeric(temp.at(i - 1)))) {
             if (i != 0) {
-                if (temp.at(i - 1) == ']' || temp.at(i - 1) == ')') {
+                if (temp.at(i - 1) == ')') {
                     std::string errorMessage = "Invalid input near:\n\"" + temp + "\"\n";
                     errorMessage += ShowError::err(i);
                     return RETURN_TYPE_ERROR{MathEngine::Error(MathEngine::ErrorType::INVALID_INPUT, errorMessage)};
@@ -39,11 +39,9 @@ RETURN_TYPE_ERROR inputParser::parseInput(std::string &in, const char *argv) {
         in += temp.at(i);
 
         if (i + 1 != temp.size()) {
-            // Implizite Multiplikation von Klammern ((x+y)(x+y)) und Funktionen/Konstanten (4[pi] und [pi][pi])
+            // Implizite Multiplikation von Klammern ((x+y)(x+y))
             if ((temp.at(i) == ')' && temp.at(i + 1) == '(') ||
-                ((isNumeric(temp.at(i)) &&
-                  temp.at(i + 1) == '[') ||
-                 (temp.at(i) == ']' && temp.at(i + 1) == '['))) {
+                (isNumeric(temp.at(i)) && (temp.at(i) >= 'A' && temp.at(i) <= 'z'))) {
                 in += '*';
             }
         }

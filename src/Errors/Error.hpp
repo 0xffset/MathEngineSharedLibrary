@@ -14,7 +14,6 @@
 namespace MathEngine {
     enum class ErrorType {
         FUNC_CONST_NOT_FOUND,
-        NO_OPENING_BRACKET,
         INVALID_INPUT,
         UNEVEN_DISTRIBUTION_OF_PARENTHESIS,
         EMPTY_INPUT,
