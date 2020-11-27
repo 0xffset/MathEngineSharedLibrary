@@ -31,4 +31,6 @@ bool isConstant(char c, int amount);
 
 bool isOperator(char c);
 
+bool isLetter(char c);
+
 #endif //MATHENGINE_HEADEROFCONVENIENCE_HPP

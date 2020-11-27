@@ -46,4 +46,4 @@ add_library(MathEngineSharedLibrary SHARED
         src/TreeNodes/TreeNode.cpp
         src/TreeNodes/TreeNode.hpp
         src/Main.cpp
-        src/Errors/Error.hpp src/Errors/Error.cpp)
+        src/Errors/Error.hpp src/Errors/Error.cpp src/Operators/Factorial/Factorial.cpp src/Operators/Factorial/Factorial.hpp)

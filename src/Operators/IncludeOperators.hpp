@@ -9,6 +9,7 @@
 #include "Subtraction/Subtraction.hpp"
 #include "Multiplication/Multiplication.hpp"
 #include "Division/Division.hpp"
+#include "Factorial/Factorial.hpp"
 #include "Power/Power.hpp"
 #include "SquareRoot/SquareRoot.hpp"
 #include "Sine/Sine.hpp"

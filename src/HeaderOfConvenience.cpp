@@ -17,5 +17,9 @@ bool isConstant(char c, int amount) {
 }
 
 bool isOperator(char c) {
-    return c =='+' || c == '-' || c == '*' || c == '/' || c == '^';
+    return c == '+' || c == '-' || c == '*' || c == '/' || c == '^';
+}
+
+bool isLetter(char c) {
+    return (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z');
 }

@@ -21,6 +21,7 @@ namespace MathEngine {
         INSUFFICIENT_ARGUMENT_COUNT,
         SQUARE_ROOT_OF_NEGATIVE,
         DIVISION_BY_ZERO,
+        TOO_LARGE_FACTORIAL
     };
 
     struct Error {

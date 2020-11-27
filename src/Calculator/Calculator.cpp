@@ -83,6 +83,7 @@ void MathEngine::Calculator::setup() {
     ADD_OP('*', new Multiplication(3, "*", 2))
     ADD_OP('/', new Division(3, "/", 2))
     ADD_OP('^', new Power(5, "^", 2))
+    ADD_OP('!', new Factorial(6, "!", 1))
     ADD_OP(funcCode(this->funcCount), new Sign(4, "-", 1))
     this->funcCount++;
 }

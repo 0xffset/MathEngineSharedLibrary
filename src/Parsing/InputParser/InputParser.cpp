@@ -25,23 +25,29 @@ RETURN_TYPE_ERROR inputParser::parseInput(std::string &in, const char *argv) {
     }
 
     for (int i = 0; i < temp.size(); i++) {
-        if (temp.at(i) == '.' && (i == 0 || !isNumeric(temp.at(i - 1)))) {
+        if (temp.at(i) == '.') {
             if (i != 0) {
-                if (temp.at(i - 1) == ')') {
+                if (isOperator(temp.at(i - 1))) {
+                    in += '0';
+                } else if (!isNumeric(temp.at(i - 1))) {
                     std::string errorMessage = "Invalid input near:\n\"" + temp + "\"\n";
                     errorMessage += ShowError::err(i);
                     return RETURN_TYPE_ERROR{MathEngine::Error(MathEngine::ErrorType::INVALID_INPUT, errorMessage)};
                 }
+            } else {
+                in += '0';
             }
-            in += '0';
         }
 
         in += temp.at(i);
 
         if (i + 1 != temp.size()) {
             // Implizite Multiplikation von Klammern ((x+y)(x+y))
-            if ((temp.at(i) == ')' && temp.at(i + 1) == '(') ||
-                (isNumeric(temp.at(i)) && ((temp.at(i) >= 'A' && temp.at(i) <= 'Z') || (temp.at(i) >= 'a' && temp.at(i) <= 'z')))) {
+            if ((temp.at(i) == ')' && (temp.at(i + 1) == '(' ||
+                                       isNumeric(temp.at(i + 1)) ||
+                                       isLetter(temp.at(i + 1)))) ||
+                (isNumeric(temp.at(i)) && (isLetter(temp.at(i + 1)) ||
+                                           temp.at(i + 1) == '('))) {
                 in += '*';
             }
         }
