@@ -41,7 +41,7 @@ RETURN_TYPE_ERROR inputParser::parseInput(std::string &in, const char *argv) {
         if (i + 1 != temp.size()) {
             // Implizite Multiplikation von Klammern ((x+y)(x+y))
             if ((temp.at(i) == ')' && temp.at(i + 1) == '(') ||
-                (isNumeric(temp.at(i)) && (temp.at(i) >= 'A' && temp.at(i) <= 'z'))) {
+                (isNumeric(temp.at(i)) && ((temp.at(i) >= 'A' && temp.at(i) <= 'Z') || (temp.at(i) >= 'a' && temp.at(i) <= 'z')))) {
                 in += '*';
             }
         }
