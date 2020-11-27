@@ -36,7 +36,7 @@ RETURN_TYPE_ERROR infixToRPN::convertInput(std::string &in, std::string &rpn_out
     std::stack<char> operatorStack;
     for (int i = 0; i < in.size(); i++) {
         char token = in.at(i);
-        if (token >= 'A' && token <= 'z') {
+        if ((token >= 'A' && token <= 'Z') || (token >= 'a' && token <= 'z')) {
             std::string specialSymbolParse;
 
             while (i < in.size() && !isOperator(in.at(i)) && in.at(i) != '(' && in.at(i) != ')') {

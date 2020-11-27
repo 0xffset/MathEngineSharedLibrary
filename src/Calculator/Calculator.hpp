@@ -19,7 +19,7 @@
 
 namespace MathEngine {
     class Calculator {
-    private: // TODO make this private again
+    private:
         std::map<std::string, char> operatorParseTable;
         std::map<std::string, char> constantParseTable;
         std::map<char, Constant> constantTable; // because im lazy
