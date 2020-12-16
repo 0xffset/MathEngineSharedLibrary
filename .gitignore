@@ -7,3 +7,7 @@
 !/cmake-build-release/libMathEngineSharedLibrary.so
 !/cmake-build-debug-armhf/libMathEngineSharedLibrary.so
 !/cmake-build-release-armhf/libMathEngineSharedLibrary.so
+/cmake-build-debug/
+/cmake-build-debug-armhf/
+/cmake-build-release/
+/cmake-build-release-armhf/
