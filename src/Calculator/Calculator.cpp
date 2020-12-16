@@ -7,16 +7,12 @@
 #include "../Parsing/RPNtoBinaryTree/RPNtoBinaryTree.hpp"
 #include "../Parsing/InputParser/InputParser.hpp"
 
-#define GET_TIME_PRE this->start = std::chrono::high_resolution_clock::now();
-#define GET_TIME_POST this->stop = std::chrono::high_resolution_clock::now();
+#define GET_TIME_PRE() this->start = std::chrono::high_resolution_clock::now();
+#define GET_TIME_POST() this->stop = std::chrono::high_resolution_clock::now();
 
 MathEngine::Calculator::Calculator() {
     this->setup();
-}
-
-/*
- * Could be optimized by instead of using std::holds_alternative, use std::alternative::index() with appropriate index
- */
+}   
 
 RETURN_TYPE_ERROR MathEngine::Calculator::initCalculation(const std::string& _input) {
     this->rpn_string = "";
@@ -28,30 +24,30 @@ RETURN_TYPE_ERROR MathEngine::Calculator::initCalculation(const std::string& _in
         return parseInput;
     }
 
-    GET_TIME_PRE
+    GET_TIME_PRE()
     RETURN_TYPE_ERROR convertInput = infixToRPN::convertInput(parsedInput, this->rpn_out, this->rpn_string,
                                                               this->constantTable, this->operatorTable,
                                                               this->constantParseTable, this->operatorParseTable);
-    GET_TIME_POST
+    GET_TIME_POST()
     if (std::holds_alternative<MathEngine::Error>(convertInput)) {
         return convertInput;
     }
 
     this->infixToRPNTime = std::chrono::duration_cast<std::chrono::microseconds>(this->stop - this->start);
 
-    GET_TIME_PRE
+    GET_TIME_PRE()
     RETURN_TYPE_ERROR_TREE tree = rpnToBinaryTree::parseBinaryTree(this->rpn_string, this->constantTable,
                                                                    this->operatorTable);
-    GET_TIME_POST
+    GET_TIME_POST()
     if (std::holds_alternative<MathEngine::Error>(tree)) {
         return RETURN_TYPE_ERROR{std::get<MathEngine::Error>(tree)};
     }
 
     this->RPNtoBinaryTreeTime = std::chrono::duration_cast<std::chrono::microseconds>(this->stop - this->start);
 
-    GET_TIME_PRE
+    GET_TIME_PRE()
     RETURN_TYPE_ERROR_LONGDOUBLE res = this->calculate(std::get<TreeNode>(tree));
-    GET_TIME_POST
+    GET_TIME_POST()
     if (std::holds_alternative<MathEngine::Error>(res)) {
         return RETURN_TYPE_ERROR{std::get<MathEngine::Error>(res)};
     }
