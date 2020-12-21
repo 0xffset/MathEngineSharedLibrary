@@ -6,8 +6,8 @@
 
 #include <utility>
 
-RETURN_TYPE_ERROR_LONGDOUBLE Addition::calc(long double params[]) {
+RETURN_TYPE_ERROR_LONGDOUBLE MathEngine::Addition::calc(long double params[]) {
     return RETURN_TYPE_ERROR_LONGDOUBLE{params[0] + params[1]};
 }
 
-Addition::Addition(int _pr, std::string _sr, int _ac) : Operator(_pr, std::move(_sr), _ac) {}
+MathEngine::Addition::Addition(int _pr, std::string _sr, int _ac) : Operator(_pr, std::move(_sr), _ac) {}

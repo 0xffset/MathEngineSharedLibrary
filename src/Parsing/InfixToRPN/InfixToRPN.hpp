@@ -13,7 +13,7 @@
 #include <string>
 #include <variant>
 
-namespace infixToRPN {
+namespace MathEngine::infixToRPN {
     void spacing(std::string &rpn_out, std::string &rpn_string);
 
     RETURN_TYPE_ERROR convertInput(std::string &in, std::string &rpn_out, std::string &rpn_string,

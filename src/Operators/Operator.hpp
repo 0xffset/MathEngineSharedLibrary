@@ -10,17 +10,18 @@
 
 #include "../Errors/Error.hpp"
 
+namespace MathEngine {
+    class Operator {
+    public:
+        int precedence;
+        std::string stringRepresentation;
+        int argumentCount;
+        bool leftAssociate = false;
 
-class Operator {
-public:
-    int precedence;
-    std::string stringRepresentation;
-    int argumentCount;
-    bool leftAssociate = false;
+        Operator(int _pr, std::string _sr, int _ac);
 
-    Operator(int _pr, std::string _sr, int _ac);
-
-    virtual RETURN_TYPE_ERROR_LONGDOUBLE calc(long double params[]) = 0;
-};
+        virtual RETURN_TYPE_ERROR_LONGDOUBLE calc(long double params[]) = 0;
+    };
+}
 
 #endif //MATHENGINE_OPERATOR_HPP

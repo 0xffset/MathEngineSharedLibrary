@@ -10,11 +10,13 @@
 
 #include <variant>
 
-class Addition : public Operator {
-public:
-    Addition(int _pr, std::string _sr, int _ac);
+namespace MathEngine {
+    class Addition : public MathEngine::Operator {
+    public:
+        Addition(int _pr, std::string _sr, int _ac);
 
-    RETURN_TYPE_ERROR_LONGDOUBLE calc(long double params[]) override;
-};
+        RETURN_TYPE_ERROR_LONGDOUBLE calc(long double params[]) override;
+    };
+}
 
 #endif //MATHENGINE_ADDITION_HPP

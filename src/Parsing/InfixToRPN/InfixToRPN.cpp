@@ -18,7 +18,7 @@ rpn_out += y; \
 rpn_string += y;
 
 
-void infixToRPN::spacing(std::string &rpn_out, std::string &rpn_string) {
+void MathEngine::infixToRPN::spacing(std::string &rpn_out, std::string &rpn_string) {
     if (!rpn_out.empty()) {
         if (rpn_out.at(rpn_out.size() - 1) != ' ') {
             rpn_out += " ";
@@ -27,7 +27,7 @@ void infixToRPN::spacing(std::string &rpn_out, std::string &rpn_string) {
     }
 }
 
-RETURN_TYPE_ERROR infixToRPN::convertInput(std::string &in, std::string &rpn_out, std::string &rpn_string,
+RETURN_TYPE_ERROR MathEngine::infixToRPN::convertInput(std::string &in, std::string &rpn_out, std::string &rpn_string,
                                            const std::map<char, Constant> &constantTable,
                                            const std::map<char, Operator *> &operatorTable,
                                            const std::map<std::string, char> &constantParseTable,
@@ -36,10 +36,10 @@ RETURN_TYPE_ERROR infixToRPN::convertInput(std::string &in, std::string &rpn_out
     std::stack<char> operatorStack;
     for (int i = 0; i < in.size(); i++) {
         char token = in.at(i);
-        if (isLetter(token)) {
+        if (MathEngine::isLetter(token)) {
             std::string specialSymbolParse;
 
-            while (i < in.size() && !isOperator(in.at(i)) && in.at(i) != '(' && in.at(i) != ')') {
+            while (i < in.size() && !MathEngine::isOperator(in.at(i)) && in.at(i) != '(' && in.at(i) != ')') {
                 specialSymbolParse += in.at(i);
                 i++;
             }
@@ -65,19 +65,19 @@ RETURN_TYPE_ERROR infixToRPN::convertInput(std::string &in, std::string &rpn_out
         }
 
 
-        if (isNumeric(token) || token == '.' || isConstant(token, constantTable.size())) {
+        if (MathEngine::isNumeric(token) || token == '.' || MathEngine::isConstant(token, constantTable.size())) {
             getCorrectString(constantTable, token, .)
 
             // if number ends
-            if (i + 1 != in.size() && !(isNumeric(in.at(i + 1))) && in.at(i + 1) != '.') {
+            if (i + 1 != in.size() && !(MathEngine::isNumeric(in.at(i + 1))) && in.at(i + 1) != '.') {
                 rpn_out += ' ';
                 rpn_string += ' ';
             }
-        } else if (isFunction(token, operatorTable.size()) || token == '(') {
+        } else if (MathEngine::isFunction(token, operatorTable.size()) || token == '(') {
             operatorStack.push(token);
         } else if (token == ')') {
             while (operatorStack.top() != '(') {
-                infixToRPN::spacing(rpn_out, rpn_string);
+                MathEngine::infixToRPN::spacing(rpn_out, rpn_string);
 
                 getCorrectString(operatorTable, operatorStack.top(), ->)
 
@@ -99,20 +99,20 @@ RETURN_TYPE_ERROR infixToRPN::convertInput(std::string &in, std::string &rpn_out
                    (operatorTable.at(operatorStack.top())->precedence > operatorTable.at(token)->precedence ||
                     (operatorTable.at(operatorStack.top())->precedence == operatorTable.at(token)->precedence &&
                      !operatorTable.at(token)->leftAssociate))) {
-                infixToRPN::spacing(rpn_out, rpn_string);
+                MathEngine::infixToRPN::spacing(rpn_out, rpn_string);
 
                 getCorrectString(operatorTable, operatorStack.top(), ->)
 
                 operatorStack.pop();
             }
-            infixToRPN::spacing(rpn_out, rpn_string);
+            MathEngine::infixToRPN::spacing(rpn_out, rpn_string);
 
             operatorStack.push(token);
         }
     }
 
     while (!operatorStack.empty()) {
-        infixToRPN::spacing(rpn_out, rpn_string);
+        MathEngine::infixToRPN::spacing(rpn_out, rpn_string);
 
         getCorrectString(operatorTable, operatorStack.top(), ->)
 

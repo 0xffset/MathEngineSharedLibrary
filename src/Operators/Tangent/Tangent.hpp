@@ -10,11 +10,13 @@
 
 #include <variant>
 
-class Tangent : public Operator {
-public:
-    Tangent(int _pr, std::string _sr, int _ac);
+namespace MathEngine {
+    class Tangent : public MathEngine::Operator {
+    public:
+        Tangent(int _pr, std::string _sr, int _ac);
 
-    RETURN_TYPE_ERROR_LONGDOUBLE calc(long double params[]) override;
-};
+        RETURN_TYPE_ERROR_LONGDOUBLE calc(long double params[]) override;
+    };
+}
 
 #endif //MATHENGINE_TANGENT_HPP

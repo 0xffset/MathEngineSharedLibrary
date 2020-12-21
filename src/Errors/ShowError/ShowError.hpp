@@ -7,7 +7,7 @@
 
 #include <string>
 
-namespace ShowError {
+namespace MathEngine::ShowError {
     std::string err(int i);
 }
 

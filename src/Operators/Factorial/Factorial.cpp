@@ -6,7 +6,7 @@
 
 #include <utility>
 
-RETURN_TYPE_ERROR_LONGDOUBLE Factorial::calc(long double params[]) {
+RETURN_TYPE_ERROR_LONGDOUBLE MathEngine::Factorial::calc(long double params[]) {
     auto out = (long long) params[0];
     // TODO rework this with own data type once implemented
     if (out > 20) {
@@ -23,4 +23,4 @@ RETURN_TYPE_ERROR_LONGDOUBLE Factorial::calc(long double params[]) {
     return RETURN_TYPE_ERROR_LONGDOUBLE{(long double) out};
 }
 
-Factorial::Factorial(int _pr, std::string _sr, int _ac) : Operator(_pr, std::move(_sr), _ac) {}
+MathEngine::Factorial::Factorial(int _pr, std::string _sr, int _ac) : Operator(_pr, std::move(_sr), _ac) {}

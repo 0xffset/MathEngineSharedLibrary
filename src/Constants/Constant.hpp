@@ -8,12 +8,13 @@
 #include <cmath>
 #include <string>
 
-class Constant {
-public:
-    long double value{};
-    std::string stringRepresentation;
+namespace MathEngine {
+    class Constant {
+    public:
+        long double value{};
+        std::string stringRepresentation;
 
-    Constant(long double _value, std::string _sr);
-};
-
+        Constant(long double _value, std::string _sr);
+    };
+}
 #endif //MATHENGINE_CONSTANT_HPP

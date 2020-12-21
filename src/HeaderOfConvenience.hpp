@@ -23,14 +23,16 @@ code++;
 
 #define ADD_OP(name, _Operator) this->operatorTable.insert(std::pair<char, Operator*>(name, _Operator));
 
-bool isNumeric(char c);
+namespace MathEngine {
+    bool isNumeric(char c);
 
-bool isFunction(char c, int amount);
+    bool isFunction(char c, int amount);
 
-bool isConstant(char c, int amount);
+    bool isConstant(char c, int amount);
 
-bool isOperator(char c);
+    bool isOperator(char c);
 
-bool isLetter(char c);
+    bool isLetter(char c);
+}
 
 #endif //MATHENGINE_HEADEROFCONVENIENCE_HPP

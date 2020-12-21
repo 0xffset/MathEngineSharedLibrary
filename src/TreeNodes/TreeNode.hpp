@@ -8,24 +8,22 @@
 #include <any>
 #include <vector>
 
-namespace TreeNodeType {
-    enum class Type {
+namespace MathEngine {
+    enum class TreeNodeType {
         Operator,
         Constant,
         Number
     };
-}
 
-namespace MathEngine {
     class TreeNode {
     public:
-        TreeNodeType::Type type;
+        TreeNodeType type;
         long double value;
         std::vector<TreeNode> nodes;
 
-        TreeNode(TreeNodeType::Type _type, long double _value);
+        TreeNode(TreeNodeType _type, long double _value);
 
-        TreeNode(TreeNodeType::Type _type, long double _value, std::vector<TreeNode> _nodes);
+        TreeNode(TreeNodeType _type, long double _value, std::vector<TreeNode> _nodes);
     };
 }
 

@@ -6,10 +6,10 @@
 
 #include <utility>
 
-Sign::Sign(int _pr, std::string _sr, int _ac) : Operator(_pr, std::move(_sr), _ac) {
+MathEngine::Sign::Sign(int _pr, std::string _sr, int _ac) : Operator(_pr, std::move(_sr), _ac) {
 
 }
 
-RETURN_TYPE_ERROR_LONGDOUBLE Sign::calc(long double params[]) {
+RETURN_TYPE_ERROR_LONGDOUBLE MathEngine::Sign::calc(long double params[]) {
     return RETURN_TYPE_ERROR_LONGDOUBLE{-params[0]};
 }

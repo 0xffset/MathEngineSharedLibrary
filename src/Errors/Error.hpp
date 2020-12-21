@@ -8,6 +8,7 @@
 #define RETURN_TYPE_ERROR std::variant<MathEngine::Error, MathEngine::NoError>
 #define RETURN_TYPE_ERROR_TREE std::variant<MathEngine::Error, MathEngine::TreeNode>
 #define RETURN_TYPE_ERROR_LONGDOUBLE std::variant<MathEngine::Error, long double>
+#define RETURN_TYPE_ERROR_BOOL std::variant<MathEngine::Error, bool>
 
 #include <string>
 

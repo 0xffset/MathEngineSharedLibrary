@@ -10,11 +10,13 @@
 
 #include <variant>
 
-class Sign : public Operator {
-public:
-    Sign(int _pr, std::string _sr, int _ac);
+namespace MathEngine {
+    class Sign : public MathEngine::Operator {
+    public:
+        Sign(int _pr, std::string _sr, int _ac);
 
-    RETURN_TYPE_ERROR_LONGDOUBLE calc(long double params[]) override;
-};
+        RETURN_TYPE_ERROR_LONGDOUBLE calc(long double params[]) override;
+    };
+}
 
 #endif //MATHENGINE_SIGN_HPP

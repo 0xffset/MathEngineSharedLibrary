@@ -6,8 +6,8 @@
 
 #include <utility>
 
-MathEngine::TreeNode::TreeNode(TreeNodeType::Type _type, long double _value) :
+MathEngine::TreeNode::TreeNode(TreeNodeType _type, long double _value) :
         type(_type), value(_value) {}
 
-MathEngine::TreeNode::TreeNode(TreeNodeType::Type _type, long double _value, std::vector<TreeNode> _nodes) :
+MathEngine::TreeNode::TreeNode(TreeNodeType _type, long double _value, std::vector<TreeNode> _nodes) :
         type(_type), value(_value), nodes(std::move(_nodes)) {}

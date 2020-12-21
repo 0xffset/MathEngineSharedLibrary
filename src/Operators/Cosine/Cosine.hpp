@@ -10,11 +10,13 @@
 
 #include <variant>
 
-class Cosine : public Operator {
-public:
-    Cosine(int _pr, std::string _sr, int _ac);
+namespace MathEngine {
+    class Cosine : public MathEngine::Operator {
+    public:
+        Cosine(int _pr, std::string _sr, int _ac);
 
-    RETURN_TYPE_ERROR_LONGDOUBLE calc(long double params[]) override;
-};
+        RETURN_TYPE_ERROR_LONGDOUBLE calc(long double params[]) override;
+    };
+}
 
 #endif //MATHENGINE_COSINE_HPP

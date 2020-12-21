@@ -11,7 +11,7 @@
 #include "../../HeaderOfConvenience.hpp"
 #include "../../Errors/Error.hpp"
 
-namespace inputParser {
+namespace MathEngine::inputParser {
     RETURN_TYPE_ERROR parseInput(std::string &in, const char *argv);
     int numberOfOccurrences(std::string &str, char match);
 }

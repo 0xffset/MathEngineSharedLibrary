@@ -12,22 +12,23 @@
 
 MathEngine::Calculator::Calculator() {
     this->setup();
-}   
+}
 
-RETURN_TYPE_ERROR MathEngine::Calculator::initCalculation(const std::string& _input) {
+RETURN_TYPE_ERROR MathEngine::Calculator::initCalculation(const std::string &_input) {
     this->rpn_string = "";
     this->rpn_out = "";
 
     std::string parsedInput;
-    RETURN_TYPE_ERROR parseInput = inputParser::parseInput(parsedInput, _input.c_str());
+    RETURN_TYPE_ERROR parseInput = MathEngine::inputParser::parseInput(parsedInput, _input.c_str());
     if (std::holds_alternative<MathEngine::Error>(parseInput)) {
         return parseInput;
     }
 
     GET_TIME_PRE()
-    RETURN_TYPE_ERROR convertInput = infixToRPN::convertInput(parsedInput, this->rpn_out, this->rpn_string,
-                                                              this->constantTable, this->operatorTable,
-                                                              this->constantParseTable, this->operatorParseTable);
+    RETURN_TYPE_ERROR convertInput = MathEngine::infixToRPN::convertInput(parsedInput, this->rpn_out, this->rpn_string,
+                                                                          this->constantTable, this->operatorTable,
+                                                                          this->constantParseTable,
+                                                                          this->operatorParseTable);
     GET_TIME_POST()
     if (std::holds_alternative<MathEngine::Error>(convertInput)) {
         return convertInput;
@@ -36,8 +37,8 @@ RETURN_TYPE_ERROR MathEngine::Calculator::initCalculation(const std::string& _in
     this->infixToRPNTime = std::chrono::duration_cast<std::chrono::microseconds>(this->stop - this->start);
 
     GET_TIME_PRE()
-    RETURN_TYPE_ERROR_TREE tree = rpnToBinaryTree::parseBinaryTree(this->rpn_string, this->constantTable,
-                                                                   this->operatorTable);
+    RETURN_TYPE_ERROR_TREE tree = MathEngine::rpnToBinaryTree::parseBinaryTree(this->rpn_string, this->constantTable,
+                                                                               this->operatorTable);
     GET_TIME_POST()
     if (std::holds_alternative<MathEngine::Error>(tree)) {
         return RETURN_TYPE_ERROR{std::get<MathEngine::Error>(tree)};
@@ -84,8 +85,8 @@ void MathEngine::Calculator::setup() {
     this->funcCount++;
 }
 
-RETURN_TYPE_ERROR_LONGDOUBLE MathEngine::Calculator::calculate(const TreeNode &tree) {
-    if (tree.type != TreeNodeType::Type::Operator)
+RETURN_TYPE_ERROR_LONGDOUBLE MathEngine::Calculator::calculate(const MathEngine::TreeNode &tree) {
+    if (tree.type != MathEngine::TreeNodeType::Operator)
         return RETURN_TYPE_ERROR_LONGDOUBLE{tree.value};
 
     long double temp[tree.nodes.size()];

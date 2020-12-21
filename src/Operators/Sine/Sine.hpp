@@ -10,11 +10,13 @@
 
 #include <variant>
 
-class Sine : public Operator {
-public:
-    Sine(int _pr, std::string _sr, int _ac);
+namespace MathEngine {
+    class Sine : public MathEngine::Operator {
+    public:
+        Sine(int _pr, std::string _sr, int _ac);
 
-    RETURN_TYPE_ERROR_LONGDOUBLE calc(long double params[]) override;
-};
+        RETURN_TYPE_ERROR_LONGDOUBLE calc(long double params[]) override;
+    };
+}
 
 #endif //MATHENGINE_SINE_HPP

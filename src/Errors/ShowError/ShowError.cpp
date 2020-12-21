@@ -4,7 +4,7 @@
 
 #include "ShowError.hpp"
 
-std::string ShowError::err( int i) {
+std::string MathEngine::ShowError::err( int i) {
     std::string out = " ";
     if (i > 0) {
         for (int j = 0; j < i; j++) {

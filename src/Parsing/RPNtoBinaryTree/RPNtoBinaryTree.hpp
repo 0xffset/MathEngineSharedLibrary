@@ -14,7 +14,7 @@
 #include <map>
 #include <variant>
 
-namespace rpnToBinaryTree {
+namespace MathEngine::rpnToBinaryTree {
     RETURN_TYPE_ERROR_TREE parseBinaryTree(const std::string &rpn_string,
                              const std::map<char, Constant> &constantTable,
                              const std::map<char, Operator *> &operatorTable);

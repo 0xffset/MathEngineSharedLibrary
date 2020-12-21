@@ -6,5 +6,5 @@
 
 #include <utility>
 
-Constant::Constant(long double _value, std::string _sr) :
+MathEngine::Constant::Constant(long double _value, std::string _sr) :
         value(_value), stringRepresentation(std::move(_sr)) {}
